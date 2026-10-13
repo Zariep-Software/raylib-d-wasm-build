@@ -1,0 +1,13 @@
+#!/bin/sh
+# Optional post-build hook for build_web.d.
+# Args: $1=path to the generated index.html
+# Env:  WEB_OUTPUT_DIR BUILD_MODE
+set -e
+
+echo "postbuild: $1"
+
+# Example: bundle for itch.io.
+# (cd "$WEB_OUTPUT_DIR" && zip -r ../game-web.zip index.html index.js index.wasm index.data 2>/dev/null)
+
+# Example: fingerprint wasm for cache busting.
+# sha1sum "$WEB_OUTPUT_DIR/index.wasm"

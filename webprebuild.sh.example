@@ -1,0 +1,17 @@
+#!/bin/sh
+# Optional pre-build hook for build_web.d.
+# Args: $1=outputDir $2=libPath $3=sourceDir $4=assetsDir
+# Env:  WEB_OUTPUT_DIR WEB_LIB_PATH WEB_SOURCE_DIR WEB_ASSETS_DIR WEB_SHELL_FILE BUILD_MODE
+#
+# Print EXTRA_CFLAGS=..., EXTRA_LDFLAGS=... or EXTRA_DFLAGS=... on stdout to
+# feed flags into the build. Everything else is just echoed to the log.
+set -e
+
+echo "prebuild: mode=$BUILD_MODE output=$1"
+
+# Example: compile an extra C file with emscripten and link it in.
+# emcc -c native/helper.c -o "$1/helper.o" -DPLATFORM_WEB
+# echo "EXTRA_DFLAGS=$1/helper.o"
+
+# Example: enable asyncify only in release.
+# [ "$BUILD_MODE" = release ] && echo "EXTRA_LDFLAGS=-sASYNCIFY"
